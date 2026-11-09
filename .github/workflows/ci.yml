@@ -1,0 +1,18 @@
+name: CI
+on:
+  push: { branches: [main] }
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - if: hashFiles('package.json') != ''
+        uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - if: hashFiles('package.json') != ''
+        run: npm install
+      - if: hashFiles('tsconfig.json') != ''
+        run: npx tsc --noEmit
