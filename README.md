@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="docs/assets/logo.svg" alt="SocioFit" width="96" height="96"/>
+<img src="docs/assets/logo.svg" alt="StockScan" width="96" height="96"/>
 
-# SocioFit
+# StockScan
 
-**Control de membresías para gimnasios y academias, con carnet QR, vencimientos y recordatorios por WhatsApp. Offline-first, sin costos mensuales.**
+**Inventario con escáner de códigos de barras, alertas de stock mínimo y cierre de caja diario para tiendas pequeñas. Offline-first.**
 
 <p>
 <img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white" alt="Expo"/>
@@ -22,12 +22,12 @@
 
 ## 🚀 Características
 
-- **Socios y planes**: alta de socios con foto, plan mensual/trimestral/anual y precio libre.
-- **Carnet QR**: cada socio tiene un QR para registrar asistencia en la puerta.
-- **Vencimientos**: panel con socios por vencer, vencidos y al día.
-- **Recordatorios locales**: notificaciones en el dispositivo, sin servidor.
-- **Cobro por WhatsApp**: mensaje de pago pre-llenado con un toque.
-- **Caja diaria**: pagos del día y resumen mensual.
+- **Escáner de códigos** con la cámara para vender y reponer.
+- **Stock mínimo**: alertas de productos por agotarse.
+- **Ventas rápidas** y entradas de mercadería.
+- **Cierre de caja diario** con totales.
+- **Catálogo** con costo, precio y categoría.
+- **Exportación CSV** de inventario y ventas.
 
 > Sin servidores, sin suscripciones y sin servicios de pago: todos los datos viven en el dispositivo (SQLite).
 
@@ -42,23 +42,23 @@
 
 ### Modelo de datos
 
-- `socios (id, nombre, telefono, foto, creado_en)`
-- `planes (id, nombre, dias, precio)`
-- `membresias (id, socio_id, plan_id, inicio, vence, pagado)`
-- `asistencias (id, socio_id, fecha_hora)`
+- `productos (id, codigo, nombre, costo, precio, stock, minimo)`
+- `movimientos (id, producto_id, tipo, cantidad, fecha)`
+- `ventas (id, fecha, total)`
+- `cierres (id, fecha, total, efectivo)`
 
 ## 🗺️ Roadmap
 
 - [ ] 1. Estructura base y navegación
-- [ ] 2. Socios, planes y membresías
-- [ ] 3. Escaneo QR y asistencias
-- [ ] 4. Recordatorios y WhatsApp
-- [ ] 5. Respaldo/exportación local
+- [ ] 2. Productos y escáner
+- [ ] 3. Ventas y movimientos
+- [ ] 4. Alertas y cierre diario
+- [ ] 5. Exportación CSV
 
 ## 📂 Estructura
 
 ```text
-SocioFit/
+StockScan/
 ├── app/            # Pantallas y rutas (Expo Router)
 ├── src/
 │   ├── db/         # Esquema y consultas SQLite
@@ -73,8 +73,8 @@ SocioFit/
 Requisitos: Node.js 20+ y la app Expo Go (o un emulador).
 
 ```bash
-git clone https://github.com/Luiss2080/SocioFit.git
-cd SocioFit
+git clone https://github.com/Luiss2080/StockScan.git
+cd StockScan
 npm install
 npx expo start
 ```
