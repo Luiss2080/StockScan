@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: 🔒 Reportar una vulnerabilidad
-    url: https://github.com/Luiss2080/SocioFit/security/policy
+    url: https://github.com/Luiss2080/StockScan/security/policy
     about: Por favor, no reportes problemas de seguridad en issues públicos.
